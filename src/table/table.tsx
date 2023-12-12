@@ -4,8 +4,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppRootType} from "./state/store";
 import {Col, Row, Table} from "antd";
 
-
-
 export const RootTable = () => {
     const dispatch = useDispatch();
     const users = useSelector<AppRootType, usersType[]>(state => state.rootReducer);
