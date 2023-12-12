@@ -10,6 +10,7 @@ export const RootTable = () => {
     const dispatch = useDispatch();
     const users = useSelector<AppRootType, usersType[]>(state => state.rootReducer);
 
+
     const columns = [
         {
             title: 'ID',
