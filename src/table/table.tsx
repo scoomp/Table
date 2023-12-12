@@ -3,14 +3,12 @@ import {initialState, initialStateType, usersType} from "./state/state";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootType} from "./state/store";
 import {Col, Row, Table} from "antd";
-import {sortUserAC} from "./Reducers/AgeReducer";
-import {sortGenderAC} from "./Reducers/GenderReducer";
 
 
 
 export const RootTable = () => {
     const dispatch = useDispatch();
-    const users = useSelector<AppRootType, usersType[]>(state => state.AgeReducer);
+    const users = useSelector<AppRootType, usersType[]>(state => state.rootReducer);
 
     const columns = [
         {

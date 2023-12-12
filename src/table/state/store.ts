@@ -1,10 +1,8 @@
 import {combineReducers, createStore} from "redux";
-import {AgeReducer} from "../Reducers/AgeReducer";
-import {GenderReducer} from "../Reducers/GenderReducer";
+import { rootReducer} from "../Reducers/RootReducer";
 
 export const  RootReducer = combineReducers({
-    AgeReducer: AgeReducer,
-    GenderReducer: GenderReducer
+    rootReducer: rootReducer
 })
 export type AppRootType = ReturnType<typeof RootReducer>
 
