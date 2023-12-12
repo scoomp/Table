@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import {initialState, initialStateType, usersType} from "./state/state";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootType} from "./state/store";
 import {Col, Row, Table} from "antd";
+import {usersType , initialState} from "./Reducers/RootReducer";
 
 export const RootTable = () => {
     const dispatch = useDispatch();
