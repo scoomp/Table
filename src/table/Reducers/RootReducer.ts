@@ -8,6 +8,7 @@
     email: string
 
 }
+
 export const initialState: initialStateType = {
     users: [
         {id: 1, age: 25, gender: 'male', email: 'user1@example.com'},
