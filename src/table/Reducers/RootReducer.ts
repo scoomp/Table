@@ -1,15 +1,14 @@
- type initialStateType = {
+ export type initialStateType = {
     users: usersType[]
 }
- type usersType = {
+ export type usersType = {
     id: number,
     age: number,
     gender: 'male' | 'female',
     email: string
 
 }
-
-export const initialState: initialStateType = {
+ export const initialState: initialStateType = {
     users: [
         {id: 1, age: 25, gender: 'male', email: 'user1@example.com'},
         {id: 2, age: 90, gender: 'female', email: 'user2@example.com'},
@@ -45,14 +44,13 @@ type SortUserActionType = {
 }
 type ActionType = SortGenderActionType | SortUserActionType
 
-export const rootReducer = (state: initialStateType, action: ActionType): initialStateType => {
+export const rootReducer = (state: initialStateType = initialState, action: ActionType): initialStateType => {
     switch (action.type) {
         case 'SORT-GENDER-TYPE': {
-            const filteredUsers = state.users.filter(user => user.gender === action.gender);// Filter users based on gender
-            return { ...state, users: filteredUsers }; // Return the state with filtered users
+            const filteredUsers = state.users.filter(user => user.gender === action.gender);
+            return { ...state, users: filteredUsers };
         }
         case 'SORT-AGE-TYPE': {
-            // Assume sorting logic remains the same
             const sortedUsers = [...state.users].sort((a, b) => a.age - b.age);
             return { ...state, users: sortedUsers };
         }
@@ -61,9 +59,6 @@ export const rootReducer = (state: initialStateType, action: ActionType): initia
     }
 };
 
-export const sortGenderAC = (genderType: 'male' | 'female'): SortGenderActionType => {
-    return {type: "SORT-GENDER-TYPE", gender: genderType}
-}
-export const sortUserAC = (ageType: number): SortUserActionType => {
-    return { type: "SORT-AGE-TYPE", age: ageType };
-}
+ export const sortGenderAC = (gender: 'male' | 'female'): SortGenderActionType => ( {type: "SORT-GENDER-TYPE", gender})
+
+ export const sortUserAC = (ageType: number): SortUserActionType => ({ type: "SORT-AGE-TYPE", age: ageType })

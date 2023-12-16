@@ -1,12 +1,19 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {AppRootType} from "./state/store";
 import {Col, Row, Table} from "antd";
-import {usersType , initialState} from "./Reducers/RootReducer";
+import {usersType, initialState, sortUserAC, initialStateType, sortGenderAC} from "./Reducers/RootReducer";
+import {AppRootType} from "./state/store";
 
 export const RootTable = () => {
     const dispatch = useDispatch();
-    const users = useSelector<AppRootType, usersType[]>(state => state.rootReducer);
+    const AgeGender = useSelector<AppRootType, initialStateType>(state => state.rootReducer)
+
+    function sortAge(ageType: number) {
+        dispatch(sortUserAC(ageType))
+    }
+    function sortGender(gender: 'male' | 'female') {
+        dispatch(sortGenderAC(gender))
+    }
 
 
     const columns = [
@@ -34,11 +41,12 @@ export const RootTable = () => {
 
     return (
         <Row>
-            <Col xs={30} md={{span: 26, offset: 45}}>
+            <Col xs={30} md={{span: 26, offset: 50}}>
                 <Table
                     dataSource={initialState.users}
                     columns={columns}
-                    // Handle age sorting
+                    rowKey={(record) => record.id}
+
                 />
             </Col>
         </Row>
